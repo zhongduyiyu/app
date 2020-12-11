@@ -6,6 +6,7 @@
         :options="editorOption"
         @blur="onEditorBlur($event)" @focus="onEditorFocus($event)"
         @change="onEditorChange($event)">
+        
     </quill-editor>
     <button v-on:click="saveHtml">保存</button>
   </div>
