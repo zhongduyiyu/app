@@ -18,8 +18,11 @@ import QuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.bubble.css'
 import 'quill/dist/quill.snow.css'
+import QuillBetterTable from 'quill-better-table'
 //注入Vue-quill-editor
+
 Vue.use(QuillEditor)
+// Vue.user(QuillBetterTable)
 
 Vue.config.productionTip = true
 //注入antd

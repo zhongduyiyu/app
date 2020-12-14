@@ -3,6 +3,7 @@
     @mousedown="onMouseDown"
     @dblclick="onDblClick"
     >
+    <link href="unpkg.com/quill-better-table@1.1.0/dist/quill-better-table.css" rel="stylesheet">
         <a-button
         @click="saveEditContent"
         >保存</a-button>
@@ -73,6 +74,16 @@ export default {
         modules: {
           toolbar: {
             container: toolbarOptions,
+            table: false, 
+            'better-table': {
+              operationMenu: {
+              items: {
+              unmergeCells: {
+              text: 'Another unmerge cells name'
+                  }
+                }
+              }
+            },
             // container: "#toolbar",
             handlers: {
               image: function(value) {
@@ -101,10 +112,19 @@ export default {
       } // 有的图片服务器要求请求头需要有token
     };
   },
+  created(){
+    console.log(this.$refs)
+  },
   mounted(){
     //获取节点
     let toolBar = document.querySelector(".ql-toolbar")
     let container = document.querySelector(".ql-container")
+    document.body.querySelector('#insert-table')
+      .onclick = () => {
+      let tableModule = quill.getModule('better-table')
+      tableModule.insertTable(3, 3)
+    }
+
     //隐藏工具条
     toolBar.addEventListener("click",()=>{
       this.isClickToolBar = true
@@ -128,6 +148,7 @@ export default {
         clientY:e.clientY
       }
     },
+  
     onDblClick(){
       let toolBar = document.querySelector(".ql-toolbar")
       toolBar.style.left=this.mousePosition.clientX+"px"
