@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import menu from "./menu"
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+ const store  = new Vuex.Store({
+  //合并仓库
   modules: {
+    menu,
   }
 })
+export default store
