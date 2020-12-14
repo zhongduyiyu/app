@@ -1,6 +1,6 @@
 <template>
     <div>
-        container//container上面需要留面包屑
+        container//container 上面需要留面包屑
         <router-view/>
     </div>
 </template>
