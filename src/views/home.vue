@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <LeftMenu/>
-        <router-view/>
+        
     </div>
 </template>
 
@@ -18,6 +18,6 @@
     .home{
         height: 100%;
         display: flex;
-
+    
     }
 </style>
