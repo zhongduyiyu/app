@@ -1,6 +1,6 @@
 <template>
-    <div class="botbar">
-        botbar
+    <div class="footer">
+        footer
     </div>
 </template>
 
@@ -11,9 +11,9 @@
 </script>
 
 <style lang="less" scoped>
-    .botbar{
+    .footer{
         width:100%;
-        height:120px;
+        flex:0 0 60px;
         background-color: #ccc;
     }
 </style>

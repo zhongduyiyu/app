@@ -1,6 +1,6 @@
 <template>
-    <div class="topbar">
-        topbar
+    <div class="header">
+        header
     </div>
 </template>
 
@@ -11,9 +11,9 @@
 </script>
 
 <style lang="less" scoped>
-    .topbar{
+    .header{
         width:100%;
-        height:80px;
+        flex:0 0 80px;
         background-color: #ccc;
     }
 </style>

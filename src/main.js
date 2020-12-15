@@ -18,11 +18,15 @@ import QuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.bubble.css'
 import 'quill/dist/quill.snow.css'
-import QuillBetterTable from 'quill-better-table'
+
 //注入Vue-quill-editor
 
 Vue.use(QuillEditor)
 // Vue.user(QuillBetterTable)
+//引入自定义滚动条
+import GeminiScrollbar from 'vue-gemini-scrollbar'
+//注入滚动条插件
+Vue.use(GeminiScrollbar)
 
 Vue.config.productionTip = true
 //注入antd

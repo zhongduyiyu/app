@@ -1,5 +1,6 @@
 <template>
   <div class="leftmenu">
+  
     <a-layout-sider width="200" style="background: #fff;height: 100%;overflow-y: auto;">
       <a-menu
         mode="inline"
@@ -30,6 +31,7 @@
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
+    </GeminiScrollBar>
   </div>
 </template>
 
@@ -38,7 +40,9 @@ export default {};
 </script>
 
 <style lang="less" scoped>
+
 .leftmenu {
+  
   min-width: 80px;
   height: 100%;
 }
