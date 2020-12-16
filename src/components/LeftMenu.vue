@@ -1,6 +1,8 @@
 <template>
+  
   <div class="leftmenu">
-    <a-layout-sider width="200" style="background: #fff;height: 100%;overflow-y: auto;">
+    <vue-scroll>
+    <a-layout-sider width="200" style="background: #fff;height: 100%;">
       <a-menu
         mode="inline"
         :default-selected-keys="['1']"
@@ -30,7 +32,8 @@
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
-    </div>
+    </vue-scroll>
+  </div>
 </template>
 
 <script>
@@ -39,7 +42,10 @@ export default {};
 
 <style lang="less" scoped>
 
+
 .leftmenu {
   height: 100%;
 }
+
+  
 </style>

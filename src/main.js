@@ -23,8 +23,10 @@ import 'quill/dist/quill.snow.css'
 Vue.use(QuillEditor)
 
 //滚动条
-import Vuebar from 'vuebar';
-Vue.use(Vuebar);
+import vuescroll from 'vuescroll';
+Vue.use(vuescroll, {
+  ops: {}, // 在这里设置全局默认配置
+});
 
 Vue.config.productionTip = true
 //注入antd
