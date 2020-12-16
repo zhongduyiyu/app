@@ -62,6 +62,7 @@
 import LeftMenu from "@/components/LeftMenu";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { login } from "../api/login"
 export default {
   data() {
     return {
@@ -89,6 +90,14 @@ export default {
         },
       },
     };
+  },
+  async created(){
+      let res = await login({params:{}})
+      console.log(res);
+
+  }, 
+  mounted(){
+
   },
   components: {
     LeftMenu,
