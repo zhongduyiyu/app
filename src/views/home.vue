@@ -91,14 +91,7 @@ export default {
       },
     };
   },
-  async created(){
-      let res = await login({params:{}})
-      console.log(res);
 
-  }, 
-  mounted(){
-
-  },
   components: {
     LeftMenu,
     Header,
