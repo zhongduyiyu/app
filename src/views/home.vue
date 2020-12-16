@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       scrollBarOptions: {
-          rail: {
+        rail: {
             background: '#f1f1f1',
             opacity: 1,
             size: '12px',

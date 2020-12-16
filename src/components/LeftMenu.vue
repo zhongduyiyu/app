@@ -5,30 +5,25 @@
     <a-layout-sider width="200" style="background: #fff;height: 100%;">
       <a-menu
         mode="inline"
-        :default-selected-keys="['1']"
-        :default-open-keys="['sub1']"
+        :default-selected-keys="['childMenu11']"
+        :default-open-keys="['parentMenu1']"
         style="height: 100%"
       >
-        <a-sub-menu key="sub1">
-          <span slot="title"><a-icon type="user" />菜单1</span>
-          <a-menu-item key="1"> option1 </a-menu-item>
-          <a-menu-item key="2"> option2 </a-menu-item>
-          <a-menu-item key="3"> option3 </a-menu-item>
-          <a-menu-item key="4"> option4 </a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu key="sub2">
-          <span slot="title"><a-icon type="laptop" />subnav 2</span>
-          <a-menu-item key="5"> option5 </a-menu-item>
-          <a-menu-item key="6"> option6 </a-menu-item>
-          <a-menu-item key="7"> option7 </a-menu-item>
-          <a-menu-item key="8"> option8 </a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu key="sub3">
-          <span slot="title"><a-icon type="notification" />subnav 3</span>
-          <a-menu-item key="9"> option9 </a-menu-item>
-          <a-menu-item key="10"> option10 </a-menu-item>
-          <a-menu-item key="11"> option11 </a-menu-item>
-          <a-menu-item key="12"> option12 </a-menu-item>
+
+        <a-sub-menu 
+        v-for="item in menuList"
+        :key="item.key">
+
+          <span slot="title"><a-icon type="user" />{{item.parentName}}</span>
+          
+          <a-menu-item
+          v-for="childItem in item.child "
+          :key="childItem.key"
+          > 
+
+          {{childItem.childName}} 
+
+          </a-menu-item>
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
@@ -37,7 +32,71 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      menuList:[
+        {
+          key:"parentMenu1",
+          parentName:"菜单一",
+          child:[
+            {
+              key:"childMenu11",
+              childName:"儿子1",
+            },
+            {
+              key:"childMenu21",
+              childName:"儿子2",
+            },
+            {
+              key:"childMenu31",
+              childName:"儿子3",
+            },
+
+          ]
+        },
+        {
+          key:"parentMenu2",
+          parentName:"菜单二",
+          child:[
+           {
+              key:"childMenu12",
+              childName:"儿子1",
+            },
+            {
+              key:"childMenu22",
+              childName:"儿子2",
+            },
+            {
+              key:"childMenu32",
+              childName:"儿子3",
+            },
+
+          ]
+        },
+        {
+          key:"parentMenu3",
+          parentName:"菜单三",
+          child:[
+            {
+              key:"childMenu13",
+              childName:"儿子1",
+            },
+            {
+              key:"childMenu23",
+              childName:"儿子2",
+            },
+            {
+              key:"childMenu33",
+              childName:"儿子3",
+            },
+          ]
+        },
+        
+      ]
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
