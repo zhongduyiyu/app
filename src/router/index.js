@@ -9,9 +9,13 @@ const routes = [
     path: '/',
     redirect:"/home"
   },
-  
- ...example,
- ...home
+  ...example,
+  ...home,
+  {
+    path: '*',
+    name:"404",
+    component:()=>import('@/views/404'),
+  }
 ]
 
 const router = new VueRouter({
