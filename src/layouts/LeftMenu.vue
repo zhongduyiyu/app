@@ -11,7 +11,7 @@
       >
 
         <a-sub-menu 
-        v-for="item in menuList"
+        v-for="item in menuConfig"
         :key="item.key">
 
           <span slot="title"><a-icon type="user" />{{item.parentName}}</span>
@@ -32,13 +32,16 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
+//引入menuConfig
+import menuConfig from "../systemConfig/menuConfig"
 export default {
-
+  data(){
+    return {
+      menuConfig
+    }
+  },
   computed: {
-    
-    //解构出菜单列表
-    ...mapState({menuList:state=>state.menu.menuList})
+
   },
 };
 </script>

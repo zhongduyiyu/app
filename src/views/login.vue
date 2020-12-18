@@ -64,11 +64,21 @@ export default {
         if (!err) {
          //api 登录
          let res = await login({params:{}})
-         console.log(res);
+         if(res.status === 200){
+           localStorage.setItem("_token",JSON.stringify(res.data.data.token))
+           localStorage.setItem("_auth",JSON.stringify(res.data.data.auth))
+           this.$router.push('/home')
+          let res2 = await this.$store.dispatch('generateRoutes')
+           console.log(res2)
+         }else{
+           this.$message.error("登录失败，请重试")
+         }
         }
       });
     },
+
   },
+
 };
 </script>
 <style lang="less" scoped>

@@ -12,10 +12,13 @@ app.use(cors());
 app.use('/login',function(req, res){
     res.json(Mock.mock({
         'status': 200,
-        'data':[{
+        'data':{
+            'userName':"麦克思",
+            'avater':"",
+            'department':"数据部",
             'token': "h14262G34Zfa",
             'auth':[1,3,5]
-        }]
+        }
     }))
 })
 

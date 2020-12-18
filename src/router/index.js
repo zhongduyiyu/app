@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import example  from './routes/example.js'
-import home from "./routes/home.js"
+import routesConfig  from './routes/routesConfig'
 import store from '../store/index'
 Vue.use(VueRouter)
 
@@ -15,8 +14,7 @@ const routes = [
     name:"login",
     component:()=>import('@/views/login'),
   },
-  ...example,
-  ...home,
+  ...routesConfig,
   //404页面跳转
   {
     path: '*',
@@ -30,8 +28,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next)=>{
+  let token = localStorage.getItem("_token")
   //登录状态判断及跳转
-  if(store.state.token.token ||to.path==="/login"){
+  if(token ||to.path==="/login"){
     next()
   }else{
     router.push("/login")

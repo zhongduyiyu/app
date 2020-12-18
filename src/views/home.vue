@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import LeftMenu from "@/components/LeftMenu";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import LeftMenu from "@/layouts/LeftMenu";
+import Header from "@/layouts/Header";
+import Footer from "@/layouts/Footer";
 import { login } from "../api/login"
 export default {
   data() {
