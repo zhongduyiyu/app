@@ -6,6 +6,7 @@ const menuConfig = [
         {
           key:"childMenu11",
           childName:"个人中心",
+          path:"/dashBoard/personal"
         },
 
 
@@ -18,14 +19,17 @@ const menuConfig = [
        {
           key:"childMenu12",
           childName:"儿子1",
+          path:"/dashBoard/checkData"
         },
         {
           key:"childMenu22",
-          childName:"儿子2",
+          childName:"儿子1",
+          path:"/dashBoard/checkData"
         },
         {
           key:"childMenu32",
-          childName:"儿子3",
+          childName:"儿子1",
+          path:"/dashBoard/checkData"
         },
 
       ]

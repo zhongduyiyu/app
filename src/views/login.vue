@@ -67,7 +67,7 @@ export default {
          if(res.status === 200){
            localStorage.setItem("_token",JSON.stringify(res.data.data.token))
            localStorage.setItem("_auth",JSON.stringify(res.data.data.auth))
-           this.$router.push('/home')
+           this.$router.push('/dashBoard/personal')
           let res2 = await this.$store.dispatch('generateRoutes')
            console.log(res2)
          }else{

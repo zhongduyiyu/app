@@ -18,7 +18,7 @@ app.use('/login',function(req, res){
             'department':"数据部",
             'token': "h14262G34Zfa",
             'auth':[1,3,5]
-        }
+        } 
     }))
 })
 

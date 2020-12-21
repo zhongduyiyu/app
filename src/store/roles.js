@@ -29,7 +29,6 @@ function filterAsyncRouter(){
     let routes = []
     if(roles){
         roles = JSON.parse(roles)
-        console.log(roles);
         routesConfig.forEach((route=>{
             roles.forEach((role)=>{
                 if(route.meta.id === role){
