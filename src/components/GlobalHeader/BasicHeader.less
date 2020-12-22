@@ -1,0 +1,55 @@
+.header{
+    width:100%;
+    flex:0 0 80px;
+    min-height: 80px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    .logo{
+        width:200px;
+        background: #00284d;
+        color:#fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        img{
+            height:30px;
+            position: absolute;
+            top:5px;
+        }
+        p{
+            top:58px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+            margin: 0;
+            line-height: 0;
+            color:#ccc;
+            position: absolute;
+        }
+    }
+    .info{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:0 80px;
+        .title{
+            font-size: 18px;
+        }
+        .userInfo{
+            display: flex;
+            
+            align-items: center;
+            .avatar{
+                height:50px;
+                width: 50px;
+                background-color: #fff;
+                border-radius: 25px;
+                margin:0 20px;
+            }
+        }
+    }
+}

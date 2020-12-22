@@ -1,7 +1,9 @@
 const menuConfig = [
     {
       key:"parentMenu1",
-      parentName:"主页",
+      parentName:"首页",
+      //图标 类型为antd内置的icon type
+      icon:"home",
       child:[
         {
           key:"childMenu11",
@@ -15,6 +17,7 @@ const menuConfig = [
     {
       key:"parentMenu2",
       parentName:"数据检查",
+      icon:"file-search",
       child:[
        {
           key:"childMenu12",
@@ -37,6 +40,64 @@ const menuConfig = [
     {
       key:"parentMenu3",
       parentName:"数据清理",
+      icon:"filter",
+      child:[
+        {
+          key:"childMenu13",
+          childName:"儿子1",
+        },
+        {
+          key:"childMenu23",
+          childName:"儿子2",
+        },
+        {
+          key:"childMenu33",
+          childName:"儿子3",
+        },
+      ]
+    },
+    {
+      key:"parentMenu4",
+      parentName:"配置报告",
+      icon:"form",
+      child:[
+        {
+          key:"childMenu13",
+          childName:"儿子1",
+        },
+        {
+          key:"childMenu23",
+          childName:"儿子2",
+        },
+        {
+          key:"childMenu33",
+          childName:"儿子3",
+        },
+      ]
+    },
+    {
+      key:"parentMenu5",
+      parentName:"报告检查",
+      icon:"check-square",
+      child:[
+        {
+          key:"childMenu13",
+          childName:"儿子1",
+        },
+        {
+          key:"childMenu23",
+          childName:"儿子2",
+        },
+        {
+          key:"childMenu33",
+          childName:"儿子3",
+        },
+      ]
+    },
+    {
+      key:"parentMenu6",
+      parentName:"设置管理",
+      icon:"setting",
       child:[
         {
           key:"childMenu13",

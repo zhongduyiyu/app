@@ -1,27 +1,47 @@
+<!--
+ * @Description: 基础布局组件
+ * @Version: 0.01
+ * @Autor: MoXu
+ * @Date: 2020-12-21 09:39:46
+ * @LastEditors: MoXu
+ * @LastEditTime: 2020-12-22 16:09:01
+-->
+
+
+
 <template>
-    <a-layout class="layout"
-    theme="dark"
-    >
+  <a-layout class="layout" theme="dark">
+
+    <a-layout-sider class="left">
+      <div class="info">
+          <img src="" alt="">
+          <p>报告自动化系统</p>
+      </div>
+      <LeftMenu/>
+    </a-layout-sider>
+
+    <a-layout class="main">
       <a-layout-header class="header"><Header /></a-layout-header>
-      <a-layout class="main">
-        <a-layout-sider class="left"><LeftMenu /></a-layout-sider>
-        <a-layout-content class="container">
+      <a-layout-content class="container">
         <a-breadcrumb class="breadcrumb">
-            <a-breadcrumb-item>Home</a-breadcrumb-item>
-            <a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
-            <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item >
-            <a-breadcrumb-item>An Application</a-breadcrumb-item>
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
+          <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item>
+          <a-breadcrumb-item>An Application</a-breadcrumb-item>
         </a-breadcrumb>
+        
         <div class="content">
           <vue-scroll :ops="scrollBarOptions">
-              <slot name="content"></slot>
-              <router-view />
+            <slot name="content"></slot>
+            <router-view />
           </vue-scroll>
         </div>
-        </a-layout-content>
-      </a-layout>
+        
+      </a-layout-content>
       <a-layout-footer class="footer"><Footer /></a-layout-footer>
     </a-layout>
+    
+  </a-layout>
 </template>
 
 <script>
@@ -53,8 +73,11 @@ export default {
           size: "8px",
           disable: false,
         },
+        breadcrumbList: [],
       },
     };
+  },
+  created () {
   },
   components: {
     Header,
@@ -65,39 +88,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .layout{
-        width: 100%;
-        height:100%;
-        overflow: hidden;
-        .header{
-            padding:0;
-            height: 78px;
-        }
-        .main{
-            .left{
-                background-color: #001529;
-            }
-            .container{
-                height: 100%;
-                overflow: hidden;
-                background-color: #f1f1f1;
-                padding:20px;
-                padding-bottom:0;
-                border:1px solid #f00;
-                .breadcrumb{
-                    height:auto;
-                    background-color: #f1f1f1;
-                }
-                .content{
-                    height: 98%;
-                    background-color: #fff;
-                    border:1px  solid  #0ff;
-                }
-            }
-        }
-        .footer{
-            padding: 0;
-            height: 60px;
-        }
-    }
+@import url("./BasicLayout.less");
 </style>
