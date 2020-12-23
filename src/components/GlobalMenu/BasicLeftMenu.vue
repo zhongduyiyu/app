@@ -4,81 +4,105 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 09:52:16
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-22 16:56:45
+ * @LastEditTime: 2020-12-23 13:49:19
 -->
 <template>
-  
   <div class="leftmenu">
-    <div>1</div>
     <vue-scroll>
-    <a-layout-sider width="200" style="background: #fff;height: 100%;border:0;">
-      <a-menu
-      theme="dark"
-      mode="inline"
-      :default-selected-keys="['childMenu11']"
-      :default-open-keys="['parentMenu1']"
-      style="height: 100%;border:0;"
+      <a-layout-sider
+        width="200"
+        style="background: #fff; height: 100%; border: 0"
       >
-        <a-sub-menu 
-        v-for="item in menuConfig"
-        :key="item.key"       
+        <a-menu
+          theme="dark"
+          mode="inline"
+          :default-selected-keys="defaultSelectedKeys"
+          :default-open-keys="defaultOpenKeys"
+          style="height: 100%; border: 0"
         >
-          <span slot="title"><a-icon :type="item.icon" />{{item.parentName}}</span>
-          <a-menu-item
-          v-for="childItem in item.child "
-          :key="childItem.key"
-          @click="handleMenuClick(childItem.path)"
-          > 
-          {{childItem.childName}} 
-          </a-menu-item>
-        </a-sub-menu>
-      </a-menu>
-    </a-layout-sider>
+          <a-sub-menu v-for="item in menuConfig" :key="item.key">
+            <span slot="title"><a-icon :type="item.icon" />{{ item.parentName }}</span
+            >
+            <a-menu-item
+              v-for="childItem in item.child"
+              :key="childItem.key"
+              @click="
+                handleMenuClick(
+                  childItem.path,
+                  item.parentName,
+                  item.key,
+                  childItem.key
+                )
+              "
+            >
+              {{ childItem.childName }}
+            </a-menu-item>
+          </a-sub-menu>
+        </a-menu>
+      </a-layout-sider>
     </vue-scroll>
   </div>
 </template>
 
 <script>
 //引入menuConfig
-import menuConfig from "@/systemConfig/menuConfig"
+import menuConfig from "@/systemConfig/menuConfig";
 export default {
-  data(){
+  data() {
     return {
-      menuConfig
-    }
+      menuConfig,
+      defaultOpenKeys: ["parentMenu1"], //默认打开的菜单
+      defaultSelectedKeys: ["childMenu11"], //默认选中的菜单
+    };
   },
-  created () {
-    this.$store.commit("setCurrentViewName",this.handleSetViewName());
+  created() {
+    this.setMenuStatus();
+    this.$store.commit("setCurrentViewName", this.setViewName());
   },
+
   methods: {
-    handleMenuClick(path) {
-      this.$router.push(path)
-      this.$store.commit("setCurrentViewName",this.handleSetViewName())
+    //设置菜单状态
+    setMenuStatus() {
+      let menuStatus = JSON.parse(sessionStorage.getItem("_menuStatus"));
+      this.defaultOpenKeys = menuStatus.defaultOpenKeys;
+      this.defaultSelectedKeys = menuStatus.defaultSelectedKeys;
     },
-    handleSetViewName() {
+    handleMenuClick(path, parentName, parentKey, childkey) {
+      //跳转
+      this.$router.push(path);
+      //header页面名称显示
+      this.$store.commit("setCurrentViewName", parentName);
+      //存储菜单状态
+      sessionStorage.setItem(
+        "_menuStatus",
+        JSON.stringify({
+          defaultOpenKeys: [parentKey],
+          defaultSelectedKeys: [childkey],
+        })
+      );
+    },
+    setViewName() {
       let fullPath = this.$router.currentRoute.fullPath;
       let viewName = "";
-      menuConfig.forEach((item) => {
-        item.child.forEach((childItem) => {
-          if (childItem.path == fullPath) {
-            viewName = item.parentName;
-            return;
+      for (let i = 0; i < menuConfig.length; i++) {
+        for (let j = 0; j < menuConfig[i].child.length; j++) {
+          if (menuConfig[i].child[j].path == fullPath) {
+            viewName = menuConfig[i].parentName;
+            break;
           }
-        });
-      });
+        }
+        if (viewName) {
+          break;
+        }
+      }
       return viewName;
     },
   },
-
 };
 </script>
 
 <style lang="less" scoped>
-
-
 .leftmenu {
   height: 100%;
 }
-
-  
 </style>

@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 0.01
+ * @Autor: MoXu
+ * @Date: 2020-12-14 09:47:42
+ * @LastEditors: MoXu
+ * @LastEditTime: 2020-12-23 14:33:08
+ */
 const home = [
     {
         path:"/dashBoard",
@@ -19,7 +27,7 @@ const home = [
             {
             path:"/dashBoard/checkData",
             name:"checkData",
-            component:()=>import('@/views/checkData/checkData'),
+            component:()=>import('@/views/checkData/checkDataList'),
             }
         ]
     }

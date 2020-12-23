@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 0.01
+ * @Autor: MoXu
+ * @Date: 2020-12-10 13:43:19
+ * @LastEditors: MoXu
+ * @LastEditTime: 2020-12-23 10:21:04
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routesConfig  from './routes/routesConfig'
@@ -22,6 +30,13 @@ const routes = [
     component:()=>import('@/views/404'),
   }
 ]
+
+
+// 改写push方法解决重复点击路由报错问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err)
+}
 
 const router = new VueRouter({
   routes

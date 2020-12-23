@@ -1,3 +1,13 @@
+/*
+ * @Description: menu参数
+ * @Version: 0.01
+ * @Autor: MoXu
+ * @Date: 2020-12-18 10:25:28
+ * @LastEditors: MoXu
+ * @LastEditTime: 2020-12-23 11:34:53
+ */
+
+
 const menuConfig = [
     {
       key:"parentMenu1",
@@ -45,14 +55,17 @@ const menuConfig = [
         {
           key:"childMenu13",
           childName:"儿子1",
+          path:"/dashBoard/cleankData"
         },
         {
           key:"childMenu23",
           childName:"儿子2",
+          path:"/dashBoard/cleankData"
         },
         {
           key:"childMenu33",
           childName:"儿子3",
+          path:"/dashBoard/cleankData"
         },
       ]
     },
@@ -62,16 +75,19 @@ const menuConfig = [
       icon:"form",
       child:[
         {
-          key:"childMenu13",
+          key:"childMenu14",
           childName:"儿子1",
+          path:"/dashBoard/setForm"
         },
         {
-          key:"childMenu23",
+          key:"childMenu24",
           childName:"儿子2",
+          path:"/dashBoard/setForm"
         },
         {
-          key:"childMenu33",
+          key:"childMenu34",
           childName:"儿子3",
+          path:"/dashBoard/setForm"
         },
       ]
     },
@@ -81,16 +97,19 @@ const menuConfig = [
       icon:"check-square",
       child:[
         {
-          key:"childMenu13",
+          key:"childMenu15",
           childName:"儿子1",
+          path:"/dashBoard/checkForm"
         },
         {
-          key:"childMenu23",
+          key:"childMenu25",
           childName:"儿子2",
+          path:"/dashBoard/checkForm"
         },
         {
-          key:"childMenu33",
+          key:"childMenu35",
           childName:"儿子3",
+          path:"/dashBoard/checkForm"
         },
       ]
     },
@@ -100,16 +119,19 @@ const menuConfig = [
       icon:"setting",
       child:[
         {
-          key:"childMenu13",
+          key:"childMenu16",
           childName:"儿子1",
+          path:"/dashBoard/systemSetup"
         },
         {
-          key:"childMenu23",
+          key:"childMenu26",
           childName:"儿子2",
+          path:"/dashBoard/systemSetup"
         },
         {
-          key:"childMenu33",
+          key:"childMenu36",
           childName:"儿子3",
+          path:"/dashBoard/systemSetup"
         },
       ]
     },
