@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-18 10:25:28
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 11:34:53
+ * @LastEditTime: 2020-12-24 16:12:17
  */
 
 
@@ -31,20 +31,9 @@ const menuConfig = [
       child:[
        {
           key:"childMenu12",
-          childName:"儿子1",
-          path:"/dashBoard/checkData"
-        },
-        {
-          key:"childMenu22",
-          childName:"儿子1",
-          path:"/dashBoard/checkData"
-        },
-        {
-          key:"childMenu32",
-          childName:"儿子1",
-          path:"/dashBoard/checkData"
-        },
-
+          childName:"全部数据",
+          path:"/dashBoard/checkDataList"
+        }
       ]
     },
     {

@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-14 09:47:42
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 14:33:08
+ * @LastEditTime: 2020-12-24 16:06:20
  */
 const home = [
     {
@@ -25,10 +25,15 @@ const home = [
             component:()=>import('@/views/personal/personal'),
             },
             {
-            path:"/dashBoard/checkData",
-            name:"checkData",
+            path:"/dashBoard/checkDataList",
+            name:"checkDataList",
             component:()=>import('@/views/checkData/checkDataList'),
-            }
+            },
+            {
+            path:"/dashBoard/checkDataDetail",
+            name:"checkDataDetail",
+            component:()=>import('@/views/checkData/checkDataDetail')
+            },
         ]
     }
 ]

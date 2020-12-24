@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 09:52:16
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 13:49:19
+ * @LastEditTime: 2020-12-24 16:05:33
 -->
 <template>
   <div class="leftmenu">
@@ -64,8 +64,10 @@ export default {
     //设置菜单状态
     setMenuStatus() {
       let menuStatus = JSON.parse(sessionStorage.getItem("_menuStatus"));
-      this.defaultOpenKeys = menuStatus.defaultOpenKeys;
-      this.defaultSelectedKeys = menuStatus.defaultSelectedKeys;
+      if(menuStatus){
+        this.defaultOpenKeys = menuStatus.defaultOpenKeys;
+        this.defaultSelectedKeys = menuStatus.defaultSelectedKeys;
+      }
     },
     handleMenuClick(path, parentName, parentKey, childkey) {
       //跳转
@@ -78,10 +80,16 @@ export default {
         JSON.stringify({
           defaultOpenKeys: [parentKey],
           defaultSelectedKeys: [childkey],
+          parentName:parentName
         })
       );
     },
     setViewName() {
+      let menuStatus = sessionStorage.getItem("_menuStatus")
+      if(menuStatus){
+        menuStatus = JSON.parse(menuStatus);
+        return menuStatus.parentName
+      }
       let fullPath = this.$router.currentRoute.fullPath;
       let viewName = "";
       for (let i = 0; i < menuConfig.length; i++) {

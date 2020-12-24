@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 15:05:31
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 18:06:20
+ * @LastEditTime: 2020-12-24 18:15:55
 -->
 <template>
     <div class="checkDataList">
@@ -38,20 +38,34 @@
                 </div>
             </div>
             <div class="right">
-                <div 
-                class="reload"
-                @click="setReloadStatus"
-                >
-                    <a-icon :type="reload?'loading':'loading-3-quarters'" /> <span>刷新</span>
-                </div>
-                <div class="fieldFilter">
-                    <a-icon type="funnel-plot" /> <span>筛选字段</span>
-                </div>
+                
+                <ui-reload :stopLoading ="stopLoading"/>
+                
+                <ui-select-wrapper>
+                    <a-checkbox>
+                        Checkbox1s
+                    </a-checkbox>
+                    <a-checkbox>
+                        Checkbox1s
+                    </a-checkbox>
+                    <a-checkbox>
+                        Checkbox1s
+                    </a-checkbox>
+                </ui-select-wrapper>
             </div>
         </div>
         <div class="table">
-            <a-table :columns="columnConfig" :data-source="data" >
-                <a slot="action"  href="javascript:;">action</a>
+            <a-table 
+            :columns="columnConfig" 
+            :data-source="data" 
+            :customRow="rowClick"
+            >
+                <a slot="action"
+                v-for="item in tableAction"
+                :key="item.id"
+                @click="handleTableActionClick(item.id)"
+                >{{item.name}}</a>
+               
             </a-table>
 
         </div>
@@ -61,31 +75,69 @@
 <script>
 import columnConfig from "@/systemConfig/dataTableConfig"
 import {projectType,defaultCheckedType} from "@/systemEnum/projectType"
+import uiSelectWrapper from "@/components/UI/ui-select-wrapper"
+import uiReload from "@/components/UI/ui-reload"
     export default {
+        components: {
+            'ui-select-wrapper':uiSelectWrapper,
+            'ui-reload':uiReload,
+        },
+ 
         data(){
             return {
-                reload:false,//控制加载图标
+                stopLoading:false,//赋值为true 暂停图标
+                push:false,//触发跳转
                 defaultCheckedType,
                 projectType,
                 columnConfig,
+                showFieldFilterList:false,
+                currentRowData:{},
+                tableAction:[
+                    {
+                        name:"详情",
+                        id:"detail"
+                    },
+                    {
+                        name:"分配任务",
+                        id:"taskAssign"
+                    },
+                    {
+                        name:"标记为未检查",
+                        id:"markAsNoCheck"
+                    },
+                    {
+                        name:"再次赋权",
+                        id:"givePermissionAgain"
+                    },
+                    ],
                 data:[
                         {
                             key: '1',
                             name: 'John Brown',
                             age: 32,
                             address: 'New York Park',
+                            id:1213123
                         },
                         {
                             key: '2',
                             name: 'Jim Green',
                             age: 40,
                             address: 'London Park',
+                            id:1213123
                         },
                         {
-                            key: '2',
+                            key: '3',
                             name: 'Jim Green',
                             age: 40,
                             address: 'London Park',
+                            id:1213123
+                        },
+                        {
+                            key: '4',
+                            name: 'Jim Green',
+                            age: 40,
+                            address: 'London Park',
+                            id:1213123
                         },
                     
                 ]
@@ -93,18 +145,38 @@ import {projectType,defaultCheckedType} from "@/systemEnum/projectType"
             }
         },
         methods:{
+            rowClick(record, index){
+                return {
+                    on: {
+                    click: () => {
+                        this.currentRowData=record
+                        if(this.push){
+                            this.$router.push(`/dashBoard/checkDataDetail?id=${this.currentRowData.id}`)
+                        }
+                    }
+                    }
+                }
+            },
             handleProjectTypeClick(typeName){
                 this.defaultCheckedType = typeName
             },
-            setReloadStatus(){
-                this.reload = !this.reload
+          
+            handleTableActionClick(actionId){
+                switch (actionId) {
+                    case "detail":this.push = true
+                    break;
+                    case "taskAssign":console.log("taskAssign");
+                    break;
+                    case "markAsNoCheck":console.log("markAsNoCheck");
+                    break;
+                    case "givePermissionAgain":console.log("givePermissionAgain");
+                    break;             
+                    default:
+                        break;
+                }
             },
-            handleMenuClick(){
-                
-            },
-            onSearch(){
-
-            }
+            handleMenuClick(){},
+            onSearch(){}
         }
     }
 </script>
