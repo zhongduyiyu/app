@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 09:39:46
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-22 16:09:01
+ * @LastEditTime: 2020-12-25 17:44:34
 -->
 
 
@@ -53,7 +53,7 @@ export default {
     return {
       scrollBarOptions: {
         rail: {
-          background: "#fff",
+          background: "rgba(0,0,0,0)",
           opacity: 1,
           size: "12px",
           specifyBorderRadius: false,
@@ -65,13 +65,17 @@ export default {
           showDelay: 500,
           onlyShowBarOnScroll: true,
           keepShow: false,
-          background: "#f1f1f1",
+          background: "rgba(0, 0, 0, 0.46)",
           opacity: 1,
           hoverStyle: false,
           specifyBorderRadius: false,
           minSize: false,
           size: "8px",
           disable: false,
+        },
+          scrollPanel: {
+          scrollingX: false,
+          scrollingY: true,
         },
         breadcrumbList: [],
       },
