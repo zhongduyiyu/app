@@ -4,23 +4,23 @@
  * @Autor: MoXu
  * @Date: 2020-12-23 17:52:58
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 17:57:04
+ * @LastEditTime: 2020-12-28 15:23:16
  */
 
 const columnConfig = [
-    { title: '任务状态',  width: 100,dataIndex: 'name', key: 'name' },
-    { title: '项目名称',  dataIndex: 'age', key: 'age' },
-    { title: '项目类型', dataIndex: 'address', key: '1' },
-    { title: '当前届次/学年', width: 140,dataIndex: 'address', key: '2' },
-    { title: '学校名称', dataIndex: 'address', key: '3' },
-    { title: '学历层次', width: 150,dataIndex: 'address', key: '4' },
-    { title: '分配人', width: 100,dataIndex: 'address', key: '5' },
-    { title: '分配时间', width: 130,dataIndex: 'address', key: '6' },
-    { title: '更新时间', width: 130,dataIndex: 'address', key: '7' },  
+    { title: '任务状态',  width: 100,dataIndex: 'projectStatus',  },
+    { title: '项目名称',  width: 140,dataIndex: 'projectName',  },
+    { title: '项目类型', dataIndex: 'projectType',  },
+    { title: '当前届次/学年', width: 140,dataIndex: 'currentYear', },
+    { title: '学校名称', dataIndex: 'schoolName',},
+    { title: '学历层次', width: 150,dataIndex: 'level', },
+    { title: '分配人', width: 100,dataIndex: 'from',  },
+    { title: '分配时间', width: 130,dataIndex: 'allotTime',  },
+    { title: '更新时间', width: 130,dataIndex: 'updateTime',  },  
     {
         title: '操作',
         key: 'operation',
-        width: 250,
+        width: 320,
         scopedSlots: { customRender: 'action' },
     },
     ]
