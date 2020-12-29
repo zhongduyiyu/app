@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 15:05:31
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-28 18:34:39
+ * @LastEditTime: 2020-12-29 13:34:04
 -->
 <template>
     <div class="checkDataList">
@@ -63,7 +63,8 @@
                 >
                     <a @click="handlePush(record.id)">详情</a>
 
-                    <a @click="handleTaskAssign"
+                    <a 
+                    @click="handleTaskAssign"
                     v-if="record.projectStatus=='待分配'"
                     > 分配任务 </a>
                     <a 
@@ -82,45 +83,35 @@
         :title="modalInfo.title"
         ok-text="确认" cancel-text="取消"
         >
-            <!-- <a-checkbox-group
-            @change="handleTaskAssignUserCheck"
-            v-if="userList.length>0"
-            >   
-            <p>第一组</p>
-                <a-checkbox 
-                v-for="item in userList"
-                :key="item.userId"
-                :value="item.userId">
-                {{item.userName}}
-                </a-checkbox>
-            </a-checkbox-group> -->
-            <!-- 这个地方需要更改成树结构，看原型图 -->
-
              <a-tree-select
+                v-if="modalInfo.id == 'taskAssign'"
                 show-search
                 style="width: 100%"
-                :value="value"
+                :value="treeValue"
                 :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
-                placeholder="Please select"
+                placeholder="请选择分配对象"
                 allow-clear
                 multiple
-                tree-default-expand-all
-                @change="onChange"
-   
+                @change="handleTreeChange"
             >
-                <a-tree-select-node key="0-1" value="parent 1" title="parent 1">
-                <a-tree-select-node key="0-1-1" value="parent 1-0" title="parent 1-0">
-                    <a-tree-select-node key="random" value="leaf1" title="my leaf" />
-                    <a-tree-select-node key="random1" value="leaf2" title="your leaf" />
-                </a-tree-select-node>
-                <a-tree-select-node key="random2" value="parent 1-1" title="parent 1-1">
-                    <a-tree-select-node key="random3" value="sss">
-                    <b slot="title" style="color: #08c">sss</b>
+                <a-tree-select-node 
+                v-for="fatherItem in userList"
+                :key="fatherItem.category" :value="fatherItem.category" :title="fatherItem.category">
+
+                     <a-tree-select-node 
+                     v-for="sonItem in fatherItem.list"
+                    :key="sonItem.category" :value="sonItem.category" :title="sonItem.category">
+
+                        <a-tree-select-node 
+                         v-for="grandSon in sonItem.list"
+                         :key="grandSon.userName" :value="grandSon.userName" :title="grandSon.userName">
+                        </a-tree-select-node>
+
                     </a-tree-select-node>
-                </a-tree-select-node>
+
                 </a-tree-select-node>
             </a-tree-select>
-             
+
         </a-modal>
         </div>
 
@@ -142,15 +133,15 @@ import {getUserList} from "@/api/getUserList"
  
         data(){
             return {
-                value:undefined,//test
+                treeValue:undefined,//树状控件已选分支的值
                 stopLoading:false,//赋值为true 暂停图标
                 push:false,//触发跳转
                 showModal:false,//模态框的显示与否
-                defaultCheckedType,
-                projectType,
-                columnConfig,
+                defaultCheckedType,//表头上默认选中的类型
+                projectType,//项目类型的enum对象
+                columnConfig,//table控件的表配置
                 modalInfo:{},//模态框信息
-                userList:[],
+                userList:[],//用于存储分配任务获取到的用户列表
                 data:[
                          {
                             key: '1',
@@ -209,8 +200,9 @@ import {getUserList} from "@/api/getUserList"
             }
         },
         methods:{
-            onChange(value){
-                this.value=value
+            handleTreeChange(value){
+                this.treeValue=value
+                this.handleTaskAssign
             },
             handleProjectTypeClick(typeName){
                 this.defaultCheckedType = typeName

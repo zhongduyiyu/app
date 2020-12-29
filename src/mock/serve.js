@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-16 14:23:29
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-28 18:25:47
+ * @LastEditTime: 2020-12-29 10:04:58
  */
 let express = require('express');   //引入express
 let Mock = require('mockjs');       //引入mock
@@ -47,10 +47,12 @@ app.use('/getUserList',function(req, res){
     res.json(Mock.mock({
         'status': 200,
         'data':[{
-            数据分析部:[
+            category:"数据分析部",
+            id:1,
+            list:[
             {
             category:"第一组",
-            id:1,
+            id:11,
                 list:[
                 {userName:"张三",userId:"11"},
                 {userName:"李四",userId:"12"},
@@ -61,7 +63,7 @@ app.use('/getUserList',function(req, res){
             },
             {
             category:"第二组",
-            id:2,
+            id:12,
                 list:[
                 {userName:"张三2",userId:"21"},
                 {userName:"李四2",userId:"22"},
