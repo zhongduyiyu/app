@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-24 11:13:50
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-24 15:14:43
+ * @LastEditTime: 2020-12-30 09:58:20
 -->
 <template>
   <div class="wrapper"  @click="handleClick" >
@@ -42,7 +42,8 @@ export default {
   methods: {
     handleClick(e) {
       e.stopPropagation();
-      this.showFieldFilterList = !this.showFieldFilterList;
+      //这个地方取反会导致点击多选框的框时，隐藏content的内容
+      this.showFieldFilterList = true;
       if (this.showFieldFilterList) {
         this.wrapperStyle.border = '1px solid #1890ff'
         this.wrapperStyle.color = '#1890ff'
@@ -51,8 +52,8 @@ export default {
     },
     handleHidden(e) {
       e.stopPropagation();
-      this.showFieldFilterList = false;
-    },
+        this.showFieldFilterList = false; 
+    }
   },
   watch: {
     showFieldFilterList: function (newValue, oldValue) {

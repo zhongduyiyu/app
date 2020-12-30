@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 15:05:31
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-29 13:34:04
+ * @LastEditTime: 2020-12-29 18:31:52
 -->
 <template>
     <div class="checkDataList">
@@ -42,15 +42,11 @@
                 <ui-reload :stopLoading ="stopLoading"/>
         
                 <ui-select-wrapper>
+
                     <a-checkbox>
                         Checkbox1s
                     </a-checkbox>
-                    <a-checkbox>
-                        Checkbox1s
-                    </a-checkbox>
-                    <a-checkbox>
-                        Checkbox1s
-                    </a-checkbox>
+                    
                 </ui-select-wrapper>
             </div>
         </div>
@@ -111,7 +107,7 @@
 
                 </a-tree-select-node>
             </a-tree-select>
-
+            
         </a-modal>
         </div>
 

@@ -4,8 +4,9 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 09:52:16
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-24 16:05:33
+ * @LastEditTime: 2020-12-30 18:16:09
 -->
+
 <template>
   <div class="leftmenu">
     <vue-scroll>
@@ -20,9 +21,24 @@
           :default-open-keys="defaultOpenKeys"
           style="height: 100%; border: 0"
         >
-          <a-sub-menu v-for="item in menuConfig" :key="item.key">
-            <span slot="title"><a-icon :type="item.icon" />{{ item.parentName }}</span
-            >
+        <a-menu-item
+            v-for="item in menuConfig.singleType.list"
+            :key="item.key"
+            @click="
+              handleMenuClick(
+                item.path,
+                item.parentName,
+                item.key,
+                item.key
+              )
+            "
+          >
+          <a-icon :type="item.icon" />
+            {{ item.parentName }}
+          </a-menu-item>
+
+          <a-sub-menu v-for="item in menuConfig.multipleType.list" :key="item.key">
+            <span slot="title"><a-icon :type="item.icon" />{{ item.parentName }}</span>
             <a-menu-item
               v-for="childItem in item.child"
               :key="childItem.key"
