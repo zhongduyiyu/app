@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 15:05:31
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-29 18:31:52
+ * @LastEditTime: 2021-01-08 15:13:40
 -->
 <template>
     <div class="checkDataList">
@@ -71,6 +71,9 @@
                     <a
                     v-if="record.projectStatus=='已分配'||record.projectStatus=='已检查'"
                     @click="handleGivePermissionAgain">再次赋权</a>
+                    <a 
+                    @click="handleDownload"
+                    >下载</a>
                 </span>
             </a-table>
             
@@ -107,7 +110,9 @@
 
                 </a-tree-select-node>
             </a-tree-select>
-            
+            <MultipleFileDownload 
+             v-if="modalInfo.id == 'MultipleFileDownload'"
+            />
         </a-modal>
         </div>
 
@@ -119,12 +124,14 @@ import columnConfig from "@/systemConfig/dataTableConfig"
 import {projectType,defaultCheckedType} from "@/systemEnum/projectType"
 import uiSelectWrapper from "@/components/UI/ui-select-wrapper"
 import uiReload from "@/components/UI/ui-reload"
+import MultipleFileDownload from "@/components/Download/MultipleFileDownload"
 //接口
 import {getUserList} from "@/api/getUserList"
     export default {
         components: {
             'ui-select-wrapper':uiSelectWrapper,
             'ui-reload':uiReload,
+            MultipleFileDownload
         },
  
         data(){
@@ -196,6 +203,11 @@ import {getUserList} from "@/api/getUserList"
             }
         },
         methods:{
+            //文件下载处理
+            handleDownload(value){
+               this.isShowModal({id:"MultipleFileDownload",title:"多级下载"}) 
+               this.showModal = true 
+            },
             handleTreeChange(value){
                 this.treeValue=value
                 this.handleTaskAssign

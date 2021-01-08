@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 09:39:46
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-25 17:44:34
+ * @LastEditTime: 2021-01-08 15:20:40
 -->
 
 
@@ -48,37 +48,12 @@
 import Header from "@/components/GlobalHeader/BasicHeader.vue";
 import LeftMenu from "@/components/GlobalMenu/BasicLeftMenu.vue";
 import Footer from "@/components/GlobalFooter/BasicFooter.vue";
+//引入滚动条配置
+import scrollBarOptions from "@/systemConfig/scrollBarOptions.js"
 export default {
   data() {
     return {
-      scrollBarOptions: {
-        rail: {
-          background: "rgba(0,0,0,0)",
-          opacity: 1,
-          size: "12px",
-          specifyBorderRadius: false,
-          gutterOfEnds: null,
-          gutterOfSide: "0px",
-          keepShow: false,
-        },
-        bar: {
-          showDelay: 500,
-          onlyShowBarOnScroll: true,
-          keepShow: false,
-          background: "rgba(0, 0, 0, 0.46)",
-          opacity: 1,
-          hoverStyle: false,
-          specifyBorderRadius: false,
-          minSize: false,
-          size: "8px",
-          disable: false,
-        },
-          scrollPanel: {
-          scrollingX: false,
-          scrollingY: true,
-        },
-        breadcrumbList: [],
-      },
+      scrollBarOptions
     };
   },
   created () {
