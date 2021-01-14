@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-18 10:25:28
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-31 09:58:27
+ * @LastEditTime: 2021-01-11 14:15:19
  */
 
 const menuConfig={
@@ -31,7 +31,7 @@ const menuConfig={
           key:"parentMenu3",
           parentName:"数据清理",
           icon:"filter",
-          path:"/dashBoard/cleankData"
+          path:"/dashBoard/cleanDataList"
         
         },
         {

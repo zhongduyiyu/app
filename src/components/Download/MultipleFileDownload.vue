@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2021-01-07 14:22:06
  * @LastEditors: MoXu
- * @LastEditTime: 2021-01-08 15:27:18
+ * @LastEditTime: 2021-01-11 13:47:45
 -->
 <template>
   <div>
@@ -24,7 +24,20 @@
     </vue-scroll>
     <a-divider />
     <div class="panel">
-      
+       <vue-scroll :ops="scrollBarOptions">
+           <ul class="fileList">
+              <li class="file"
+              v-for="item in checkedKeys"
+              :key="item"
+              >
+                <span>{{item}}</span>
+                <a
+                @click="handleDel(item)"
+                >删除</a>
+              </li>
+              
+           </ul>
+       </vue-scroll>
     </div>
   </div>
 </template>
@@ -94,21 +107,34 @@ const treeData = [
   },
 ];
 export default {
+  props:["checkedKey"],
   data() {
     return {
-      scrollBarOptions,
-      expandedKeys: ["0-0-0", "0-0-1"],
+      scrollBarOptions,//滚动条配置
+      expandedKeys: [],//默认展开的父节点
       autoExpandParent: true,
-      checkedKeys: null,
-      selectedKeys: [],
-      treeData,
+      checkedKeys: null,//选中的节点
+      selectedKeys: [],//选中的节点
+      treeData,//树数据
+      lastCheckedKey:""
     };
+
   },
   watch: {
     checkedKeys(val) {
       console.log("onCheck", val);
     },
+    checkedKey(val){
+      //判断是否为上一次触发该组件的同一列
+      if(val!=this.lastCheckedKey){
+        this.checkedKeys=null
+      }
+      //存储触发当前组件列的key值
+      this.lastCheckedKey = this.checkedKey
+    }
+    
   },
+
   methods: {
     onExpand(expandedKeys) {
       console.log("onExpand", expandedKeys);
@@ -118,6 +144,7 @@ export default {
       this.autoExpandParent = false;
     },
     onCheck(checkedKeys) {
+      //checkedKeys===选中的子节点
       console.log("onCheck", checkedKeys);
       this.checkedKeys = checkedKeys;
     },
@@ -132,6 +159,9 @@ export default {
         "nodejs.msi"
       );
     },
+    handleDel(val){
+      this.checkedKeys.splice(this.checkedKeys.indexOf(val),1)
+    }
   },
 };
 </script>
@@ -141,7 +171,23 @@ export default {
   max-height: 400px;
 }
 .panel {
-  height: 100px;
-  max-height: 250px;
+  height: 120px;
+  .fileList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    .file{
+      display: flex;
+      justify-content: space-between;
+      padding-bottom:15px;
+      span{
+        margin-right:15px;
+      }
+      a{
+        margin-right: 20px;
+      }
+    }
+  }
 }
 </style>

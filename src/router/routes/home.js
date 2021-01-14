@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-14 09:47:42
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-24 16:06:20
+ * @LastEditTime: 2021-01-11 14:15:56
  */
 const home = [
     {
@@ -33,6 +33,11 @@ const home = [
             path:"/dashBoard/checkDataDetail",
             name:"checkDataDetail",
             component:()=>import('@/views/checkData/checkDataDetail')
+            },
+            {
+            path:"/dashBoard/cleanDataList",
+            name:"cleanDataList",
+            component:()=>import('@/views/cleanData/cleanDataList')
             },
         ]
     }

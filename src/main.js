@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-16 09:20:56
  * @LastEditors: MoXu
- * @LastEditTime: 2020-12-23 09:49:36
+ * @LastEditTime: 2021-01-11 14:20:09
  */
 
 import Vue from 'vue'
@@ -33,6 +33,13 @@ Vue.use(vuescroll, {
 Vue.config.productionTip = true
 //注入antd
 Vue.use(Antd)
+
+//引入表格插件
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
+Vue.use(VXETable)
 
 new Vue({
   router,

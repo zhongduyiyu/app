@@ -4,7 +4,7 @@
  * @Autor: MoXu
  * @Date: 2020-12-21 15:05:31
  * @LastEditors: MoXu
- * @LastEditTime: 2021-01-08 15:13:40
+ * @LastEditTime: 2021-01-11 10:54:08
 -->
 <template>
     <div class="checkDataList">
@@ -72,7 +72,7 @@
                     v-if="record.projectStatus=='已分配'||record.projectStatus=='已检查'"
                     @click="handleGivePermissionAgain">再次赋权</a>
                     <a 
-                    @click="handleDownload"
+                    @click="handleDownload(record)"
                     >下载</a>
                 </span>
             </a-table>
@@ -111,7 +111,9 @@
                 </a-tree-select-node>
             </a-tree-select>
             <MultipleFileDownload 
-             v-if="modalInfo.id == 'MultipleFileDownload'"
+           :checkedKey="modalInfo.checkedKey"
+            v-if="modalInfo.id == 'MultipleFileDownload'"
+
             />
         </a-modal>
         </div>
@@ -204,8 +206,8 @@ import {getUserList} from "@/api/getUserList"
         },
         methods:{
             //文件下载处理
-            handleDownload(value){
-               this.isShowModal({id:"MultipleFileDownload",title:"多级下载"}) 
+            handleDownload(record){
+               this.isShowModal({id:"MultipleFileDownload",title:"多级下载",checkedKey:record.id}) 
                this.showModal = true 
             },
             handleTreeChange(value){
