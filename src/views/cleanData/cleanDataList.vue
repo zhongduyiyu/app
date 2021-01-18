@@ -4,10 +4,10 @@
  * @Autor: MoXu
  * @Date: 2021-01-11 14:13:04
  * @LastEditors: MoXu
- * @LastEditTime: 2021-01-11 14:19:19
+ * @LastEditTime: 2021-01-18 18:49:28
 -->
 <template>
-  <div>
+  <div class="cleanDataList">
       <PivotTable />
   </div>
 </template>
@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.cleanDataList{
+  height: 100%
+}
 </style>
